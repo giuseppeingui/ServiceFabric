@@ -16,6 +16,11 @@
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="VotingWebPkg" ServiceManifestVersion="1.0.0" />
     <ConfigOverrides />
+    <ResourceOverrides>
+      <Endpoints>
+        <Endpoint Name="ServiceEndpoint" Port="8080" Protocol="http" />
+      </Endpoints>
+    </ResourceOverrides>
   </ServiceManifestImport>
   <DefaultServices>
     <!-- The section below creates instances of service types, when an instance of this 
@@ -29,6 +34,7 @@
       </StatefulService>
     </Service>
     <Service Name="VotingWeb" ServicePackageActivationMode="ExclusiveProcess">
+      
       <StatelessService ServiceTypeName="VotingWebType" InstanceCount="[VotingWeb_InstanceCount]">
         <SingletonPartition />
       </StatelessService>
